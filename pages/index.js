@@ -37,7 +37,7 @@ export default function Home() {
             </h2>
 
             <Link href="/gallery">
-              <button className='bg-blue-500 px-4 py-3 font-medium text-white text-xl rounded-md mt-8'>
+              <button className='bg-blue-500 hover:bg-blue-700 transition-all duration-150 px-4 py-3 font-medium text-white text-xl rounded-md mt-8'>
                 View Gallery
               </button>
             </Link>
