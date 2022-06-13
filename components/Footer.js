@@ -22,6 +22,7 @@ const socialMedias = [
         link: "https://twitter.com/myacmississauga/"
     },
 ]
+
 export default function Footer() {
     return (
         <div className="flex flex-col items-center gap-4 bg-sky-900 p-8 py-16">

@@ -6,6 +6,29 @@ import Logo from "../imgs/logo.png";
 
 import { GoThreeBars } from "react-icons/go"
 
+import FacebookLogo from "../imgs/socialMedia/fb.png"
+import InstagramLogo from "../imgs/socialMedia/ig.png"
+import TwitterLogo from "../imgs/socialMedia/twitter.png"
+import { useRouter } from "next/router";
+
+const socialMedias = [
+    {
+        name: "Instagram",
+        icon: InstagramLogo,
+        link: "https://www.instagram.com/myac_mississauga/"
+    },
+    {
+        name: "Facebook",
+        icon: FacebookLogo,
+        link: "https://www.facebook.com/myacmississauga/"
+    },
+    {
+        name: "Twitter",
+        icon: TwitterLogo,
+        link: "https://twitter.com/myacmississauga/"
+    },
+]
+
 const links = [
     {
         name: "Home",
@@ -14,48 +37,41 @@ const links = [
         priority: false
     },
     {
-        name: "News",
-        link: "/current-news",
-        id: "news",
+        name: "Team",
+        link: "/team",
+        id: "team",
         priority: false
     },
     {
-        name: "Bazaar",
-        link: "/bazaar",
-        id: "bazaar",
+        name: "Events",
+        link: "/events",
+        id: "events",
         priority: false
     },
     {
-        name: "Trips & Tours",
-        link: "/trips-and-tours",
-        id: "trips-and-tours",
+        name: "Gallery",
+        link: "/gallery",
+        id: "gallery",
         priority: false
     },
     {
-        name: "Info",
-        link: "/information",
-        id: "information",
+        name: "Past Events",
+        link: "/past-events",
+        id: "past-events",
         priority: false
-    },
-    {
-        name: "About Us",
-        link: "/about",
-        id: "about",
-        priority: false
-    },
-    {
-        name: "Membership Registration Form",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLSeb-nPbnwnaFELn7ljgLFHK_VGCkp0Io8SqSTvKZLixINd_iA/viewform",
-        id: "call-to-action",
-        priority: true
     },
 ];
 
+
+
 export default function Header() {
     const [showDropdown, setShowDropdown] = useState(false);
+    const router = useRouter();
+
+    const currentRoute = router.route;
 
     return (
-        <header className="bg-gray-100 py-2 lg:py-4 sticky">
+        <header className="bg-white py-2 sticky">
             <div className="container px-4 mx-auto lg:flex lg:items-center">
                 <div className="flex justify-between items-center">
                     <Link href="/">
@@ -72,17 +88,17 @@ export default function Header() {
                             () => {
                                 setShowDropdown(!showDropdown);
                             }}
-                        >
+                    >
                         <GoThreeBars />
                     </button>
                 </div>
 
                 <div className={`${showDropdown ? "flex" : "hidden"} lg:flex flex-col lg:flex-row lg:ml-auto mt-3 lg:mt-0`} data-test-id="navbar">
                     {
-                        links.map(({ name, link, priority, id }) =>
+                        links.map(({ name, link, id }) =>
                             <Link key={name} href={link}>
-                                <a 
-                                    className={`${priority ? "text-blue-600 hover:bg-blue-600 hover:text-white text-center border border-solid border-blue-600 mt-1 lg:mt-0 lg:ml-1" : "text-gray-600 hover:bg-gray-200 hover:text-gray-700 "} p-2 lg:px-4 lg:mx-2 rounded duration-300 transition-colors `}
+                                <a
+                                    className={`${link == currentRoute ? "text-blue-400" : "text-black hover:text-blue-400"} p-2 lg:px-4 lg:mx-2 rounded duration-150 transition-colors `}
                                     data-test-id={`navbar-${id}`}
                                 >
                                     {name}
@@ -90,6 +106,14 @@ export default function Header() {
                             </Link>
                         )
                     }
+                </div>
+
+                <div className={`${showDropdown ? "flex" : "hidden"} lg:flex flex-row lg:ml-auto mt-3 lg:mt-0 items-center justify-center self-center justify-self-center gap-4`} data-test-id="navbar">
+                    {socialMedias.map(({ name, icon, link }) => (
+                        <a key={name} href={link}>
+                            <Image src={icon} width={30} height={30} alt={name} />
+                        </a>
+                    ))}
                 </div>
             </div>
         </header>

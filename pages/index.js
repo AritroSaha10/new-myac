@@ -137,7 +137,7 @@ export default function Home() {
         </div>
 
         <div className="flex-col w-3/4">
-          <Image className="filter duration-75" src={SummaryImage} alt="Placeholder" objectFit="cover" objectPosition="center" quality={100} placeholder="blur" />
+          <Image className="filter duration-75 rounded-lg" src={SummaryImage} alt="Placeholder" objectFit="cover" objectPosition="center" quality={100} placeholder="blur" />
         </div>
       </div>
 
@@ -160,7 +160,7 @@ export default function Home() {
         </div>
 
         <div className="flex-col w-3/4">
-          <Image className="filter duration-75" src={ConnectImage} alt="Placeholder" objectFit="cover" objectPosition="center" quality={100} placeholder="blur" />
+          <Image className="filter duration-75 rounded-lg" src={ConnectImage} alt="Placeholder" objectFit="cover" objectPosition="center" quality={100} placeholder="blur" />
         </div>
       </div>
     </Layout>
