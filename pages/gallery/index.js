@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+
 import { FiLink2 } from "react-icons/fi";
 
 import Layout from "../../components/Layout";
 import airtableDB from "../../db/airtable";
-
-import TeamImage from "../../imgs/team.jpg"
 
 export async function getStaticProps() {
     let galleryInfo = [];
