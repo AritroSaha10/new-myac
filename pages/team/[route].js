@@ -67,7 +67,8 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             directorInfo: directorInfo
-        }
+        },
+        revalidate: 10
     }
 }
 

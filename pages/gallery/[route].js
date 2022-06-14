@@ -66,7 +66,8 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             albumInfo: albumInfo
-        }
+        },
+        revalidate: 10
     }
 }
 
