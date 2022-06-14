@@ -26,7 +26,7 @@ const socialMedias = [
 export default function Footer() {
     return (
         <div className="flex flex-col items-center gap-4 bg-sky-900 p-8 py-16">
-            <Image src={Logo} width={98} height={35} />
+            <Image src={Logo} width={98} height={35} alt="Logo" />
 
             <hr className="h-px bg-gray-300 border-none bg-opacity-50 w-5/6"/>
 
