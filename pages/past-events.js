@@ -12,7 +12,7 @@ export async function getStaticProps() {
     const records = await airtableDB("Content pipeline").select({
         fields: ["Name", "Date", "Description", "Status", "URL", "Thumbnail"],
         sort: [{ field: "Date", direction: "desc" }],
-        filterByFormula: "NOT({Status} = 'Concluded')"
+        filterByFormula: "({Status} = 'Concluded')"
     }).all();
 
     records.map(({ fields }) => {
@@ -43,18 +43,18 @@ export default function Events({ eventsInfo }) {
                 {eventsInfo.length === 0 ? (
                     <div className="flex flex-col items-center w-full">
                         <h1 className="text-5xl text-gray-600 font-medium text-center mb-4">
-                            No upcoming events found
+                            No past events found
                         </h1>
                         <h3 className="text-xl text-gray-600 font-light text-center md:w-1/2 lg:w-1/3">
-                            Sorry, there seems to be no upcoming events as of now. Try clicking
+                            Sorry, there seems to be no past events as of now. Try clicking
                             {" "}
-                            <Link href="/past-events">
+                            <Link href="/events">
                                 <a className="text-blue-600 hover:underline">
                                     here
                                 </a>
                             </Link>
                             {" "}
-                            to view past events, or come back later to find new events by MYAC!
+                            to view upcoming events.
                         </h3>
                     </div>
                 ) : (
@@ -82,7 +82,7 @@ export default function Events({ eventsInfo }) {
 
                                     <a className="mt-2 text-lg text-blue-600 hover:underline" href={event.url} target="_blank" rel="noreferrer">
                                         <span className="flex items-center gap-2">
-                                        Learn More <FiExternalLink />
+                                            Learn More <FiExternalLink />
                                         </span>
                                     </a>
                                 </div>
