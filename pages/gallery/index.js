@@ -74,7 +74,6 @@ export default function GalleryIndex({ galleryInfo }) {
                                     />
 
                                     <h1 className="text-3xl font-semibold mt-2">{album.name}</h1>
-
                                     <p className="text-md text-gray-500">{album.date}</p>
 
                                     <Link href={`/gallery/${album.route}`}>

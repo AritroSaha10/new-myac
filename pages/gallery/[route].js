@@ -35,7 +35,7 @@ export async function getStaticProps({ params }) {
     const recordRoute = params.route;
 
     const records = await airtableDB("Gallery").select({
-        fields: ["Name", "Date", "GalleryLink", "Photos"]
+        fields: ["Name", "Date", "GalleryLink", "Photos", "CompressedPhotos"]
     }).all();
 
     const albumRecords = records.filter(record => record.fields.GalleryLink === recordRoute);
@@ -54,13 +54,14 @@ export async function getStaticProps({ params }) {
         name: albumRecord.Name,
         date: albumRecord.Date,
         route: albumRecord.GalleryLink,
-        images: albumRecord.Photos.map(image => ({
+        images: albumRecord.CompressedPhotos.map(image => ({
             src: image.url,
             width: image.width,
             height: image.height,
             blurDataURL: image.thumbnails.small.url
         }))
-    }
+    };
+
 
     return {
         props: {
@@ -82,7 +83,7 @@ export default function AlbumPage({ albumInfo }) {
                 <h1 className="text-4xl font-bold mt-4">{albumInfo.name}</h1>
                 <h3 className="text-xl text-gray-400 mb-4">{albumInfo.date}</h3>
 
-                <motion.div 
+                <motion.div
                     className="columns-1 md:columns-2 lg:columns-3 gap-8"
                     initial={{
                         opacity: 0,
@@ -107,8 +108,8 @@ export default function AlbumPage({ albumInfo }) {
                     }}
                 >
                     {albumInfo.images.map((img, i) =>
-                        <motion.div 
-                            className="mb-4" 
+                        <motion.div
+                            className="mb-4"
                             key={i}
                             initial={{
                                 opacity: 0,
