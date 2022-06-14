@@ -64,6 +64,8 @@ export default function Events({ eventsInfo }) {
                                         src={event.image}
                                         height={800}
                                         width={800}
+                                        blurDataURL={event.blurDataURL}
+                                        placeholder="blur"
                                         objectFit="cover"
                                         objectPosition="center"
                                         alt="Event promo"
