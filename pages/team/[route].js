@@ -76,7 +76,7 @@ export default function TeamPage({ directorInfo }) {
     const instagramUsername = directorInfo.igLink.slice(instagramLinkPrefix.length, -1);
 
     return (
-        <Layout noAnim>
+        <Layout noAnim name={directorInfo.name}>
             <div className="py-24 w-full">
                 <motion.div
                     initial={{

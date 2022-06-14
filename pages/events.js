@@ -36,7 +36,7 @@ export async function getStaticProps() {
 
 export default function Events({ eventsInfo }) {
     return (
-        <Layout>
+        <Layout name="Events">
             <div className="p-16 md:py-24">
                 {eventsInfo.length === 0 ? (
                     <div className="flex flex-col items-center w-full">

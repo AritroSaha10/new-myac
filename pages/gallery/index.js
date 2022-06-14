@@ -45,7 +45,7 @@ export async function getStaticProps() {
 
 export default function GalleryIndex({ galleryInfo }) {
     return (
-        <Layout>
+        <Layout name="Gallery">
             <div className="p-16 md:py-24">
                 {galleryInfo.length === 0 ? (
                     <div className="flex flex-col items-center w-full">

@@ -71,7 +71,7 @@ export async function getStaticProps({ params }) {
 
 export default function AlbumPage({ albumInfo }) {
     return (
-        <Layout>
+        <Layout name={albumInfo.name}>
             <div className="p-24 lg:px-48 w-full">
                 <Link href="/gallery">
                     <a className="text-blue-500 text-lg group">

@@ -13,7 +13,7 @@ import { HiOutlineSpeakerphone, HiOutlineDocumentDuplicate, HiOutlineRefresh } f
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout name="Home">
       <header className="h-screen relative">
         {/* Background image using Next.js Image, taken from here: https://github.com/vercel/next.js/discussions/18357#discussioncomment-132523 */}
         <Image

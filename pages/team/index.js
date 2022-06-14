@@ -37,7 +37,7 @@ export async function getStaticProps(context) {
 
 export default function TeamPage({ boardOfDirectorsInfo }) {
     return (
-        <Layout>
+        <Layout name="Team">
             <header className="h-[30vh] lg:h-[44vh] relative">
                 {/* Background image using Next.js Image, taken from here: https://github.com/vercel/next.js/discussions/18357#discussioncomment-132523 */}
                 <Image

@@ -1,13 +1,35 @@
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 import transition from "./anim/Transitions"
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-const Layout = ({ children, reverseAnim, noAnim }) => {
+const Layout = ({ children, reverseAnim, noAnim, name }) => {
+    const pageTitle = `MYAC${name ? ` | ${name}` : ""}`;
+    const pageDescription = "The Mississauga Youth Action Committee works to voice the opinions of the 145,000 youth in Mississauga and better engage youth in their community.";
+
     return (
         <div className="flex flex-col min-h-screen overflow-x-hidden">
+            <Head>
+                <title>{pageTitle}</title>
+                <meta name="description" content={pageDescription} />
+
+                <meta property="og:title" content={pageTitle} />
+                <meta property="og:description" content={pageDescription} />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
+                <meta property="og:image:type" content="image/png" />
+                <meta property="og:image:width" content="3427" />
+                <meta property="og:image:height" content="1227" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:title" content={pageTitle} />
+                <meta property="twitter:description" content={pageDescription} />
+                <meta property="twitter:image:src" content="%PUBLIC_URL%/logo.png" />
+            </Head>
+
             <Navbar />
 
             {noAnim ? (
