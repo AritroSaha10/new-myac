@@ -92,32 +92,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/*
-      <div className='w-full bg-gray-100'>
-        <div className='lg:w-3/4 flex p-36 flex-col lg:flex-row items-left'>
-          <div className="flex flex-col gap-2 text-center md:text-left">
-            <h3 className="text-lg text-blue-500">We are the Mississauga Youth Action Committee</h3>
-            <h1 className="text-5xl text-black font-bold">Empowering Youth</h1>
-
-            <p className="text-xl text-gray-400 font-light mt-2 w-1/2">
-              As a youth extension of the City of Mississauga, we represent the 145 000+ youths in the city. We help, engage, and empower.
-            </p>
-
-            <div className='mt-4'>
-              <Link href="/constitution.pdf">
-                <button className='px-6 py-3 border-sky-700 text-sky-700 border rounded-lg font-medium text-lg'>
-                  Our Constitution
-                </button>
-              </Link>
-            </div>
-          </div>
-
-          <div className="w-full p-4 mt-4" >
-            <Image src={SummaryImage} placeholder="blur" quality={100} />
-          </div>
-        </div>
-      </div>
-  */}
       <div className="flex p-10 flex-col items-center lg:flex-row lg:p-20 xl:p-40 lg:items-left bg-gray-50">
         <div className="flex flex-col items-center lg:items-start w-4/5 text-center lg:text-left mb-4 lg:mb-0">
           <h3 className="text-lg text-blue-500">We are the Mississauga Youth Action Committee</h3>
