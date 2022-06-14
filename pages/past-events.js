@@ -27,8 +27,6 @@ export async function getStaticProps() {
         })
     })
 
-    console.log(eventsInfo)
-
     return {
         props: {
             eventsInfo: eventsInfo
