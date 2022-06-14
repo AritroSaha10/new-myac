@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+import transition from "../../components/anim/Transitions";
+
 import airtableDB from "../../db/airtable";
 
 import Layout from "../../components/Layout";
@@ -79,13 +82,69 @@ export default function AlbumPage({ albumInfo }) {
                 <h1 className="text-4xl font-bold mt-4">{albumInfo.name}</h1>
                 <h3 className="text-xl text-gray-400 mb-4">{albumInfo.date}</h3>
 
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-8">
+                <motion.div 
+                    className="columns-1 md:columns-2 lg:columns-3 gap-8"
+                    initial={{
+                        opacity: 0,
+                        y: 60,
+                        scale: 1.0
+                    }}
+                    animate={{
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                            duration: 0.5,
+                            ...{ transition }
+                        }
+                    }}
+                    exit={{
+                        opacity: 0,
+                        y: 60,
+                        transition: {
+                            duration: 0.5,
+                            ...{ transition }
+                        }
+                    }}
+                >
                     {albumInfo.images.map((img, i) =>
-                        <div className="mb-4" key={i}>
+                        <motion.div 
+                            className="mb-4" 
+                            key={i}
+                            initial={{
+                                opacity: 0,
+                                y: 60,
+                                scale: 1.0
+                            }}
+                            animate={{
+                                opacity: 1,
+                                y: 0,
+                                transition: {
+                                    delay: i * 0.2,
+                                    ...{ transition },
+                                    duration: 0.5,
+                                }
+                            }}
+                            exit={{
+                                opacity: 0,
+                                y: 60,
+                                transition: {
+                                    delay: 0.15, // Maximum 3 in a row, modulo done in order to speed up transitions
+                                    ...{ transition },
+                                    duration: 0.5,
+                                }
+                            }}
+                            whileHover={{
+                                scale: 1.03,
+                                transition: {
+                                    ease: "easeInOut",
+                                    duration: 0.15
+                                }
+                            }}
+                        >
                             <Image src={img} placeholder="blur" quality={60} alt="Album img" className="inline-block rounded-lg" />
-                        </div>
+                        </motion.div>
                     )}
-                </div>
+                </motion.div>
             </div>
         </Layout>
     );
