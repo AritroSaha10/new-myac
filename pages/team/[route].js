@@ -43,7 +43,6 @@ export async function getStaticProps({ params }) {
         }
     }
 
-    
     const directorRecord = directorRecords[0];
     
     const directorInfo = {
