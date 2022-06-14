@@ -53,7 +53,7 @@ export default function GalleryIndex({ galleryInfo }) {
                             No albums found
                         </h1>
                         <h3 className="text-xl text-gray-600 font-light text-center md:w-1/2 lg:w-1/3">
-                            Sorry, there seems to be no albums as of now. Try coming 
+                            Sorry, there seems to be no albums as of now. Try coming
                             back later to find new galleries!
                         </h3>
                     </div>
@@ -64,6 +64,8 @@ export default function GalleryIndex({ galleryInfo }) {
                                 <div className="flex flex-col p-4 bg-white outline outline-gray-200 drop-shadow-lg rounded-lg gap-2">
                                     <Image
                                         src={album.thumbnail}
+                                        width={400}
+                                        height={400}
                                         placeholder="blur"
                                         objectFit="cover"
                                         objectPosition="center"
@@ -75,11 +77,13 @@ export default function GalleryIndex({ galleryInfo }) {
 
                                     <p className="text-md text-gray-500">{album.date}</p>
 
-                                    <a className="mt-2 text-lg text-blue-600 hover:underline" href={album.url} target="_blank" rel="noreferrer">
-                                        <span className="flex items-center gap-2">
-                                        View <FiLink2 />
-                                        </span>
-                                    </a>
+                                    <Link href={`/gallery/${album.route}`}>
+                                        <a className="mt-2 text-lg text-blue-600 hover:underline">
+                                            <span className="flex items-center gap-2">
+                                                View <FiLink2 />
+                                            </span>
+                                        </a>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
