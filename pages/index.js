@@ -151,7 +151,7 @@ export default function Home() {
           </p>
 
           <div className='my-4'>
-            <Link href="/constitution.pdf">
+            <Link href="/events">
               <button className='px-6 py-3 border-sky-700 text-sky-700 border rounded-lg font-medium text-lg'>
                 View Our Events →
               </button>
