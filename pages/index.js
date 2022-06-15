@@ -10,7 +10,6 @@ import Logo from '../imgs/logo.png'
 
 import { HiOutlineSpeakerphone, HiOutlineDocumentDuplicate, HiOutlineRefresh } from "react-icons/hi"
 
-
 export default function Home() {
   return (
     <Layout name="Home">
