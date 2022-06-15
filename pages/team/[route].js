@@ -139,8 +139,8 @@ export default function TeamPage({ directorInfo }) {
                                     className="drop-shadow-lg"
                                 />
                             </motion.div>
-                            
-                            <motion.h2 
+
+                            <motion.h2
                                 className="text-2xl lg:text-3xl font-bold"
                                 initial={{
                                     x: "-50px",
@@ -160,7 +160,7 @@ export default function TeamPage({ directorInfo }) {
                                 {directorInfo.name}
                             </motion.h2>
 
-                            <motion.div 
+                            <motion.div
                                 className="flex flex-col gap-1 items-center md:items-start"
                                 initial={{
                                     x: "-50px",
@@ -191,7 +191,7 @@ export default function TeamPage({ directorInfo }) {
                         </div>
 
                         <div className="flex flex-col gap-4 w-full xl:w-2/3 mt-4">
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl font-semibold text-center md:text-left"
                                 initial={{
                                     x: "100px",
@@ -211,9 +211,26 @@ export default function TeamPage({ directorInfo }) {
                                 {directorInfo.position}
                             </motion.h1>
 
-                            <hr />
+                            <motion.hr
+                                initial={{
+                                    scale: 0,
+                                }}
 
-                            <motion.p 
+                                animate={{
+                                    scale: 1,
+                                    transition: { delay: animOffset + 0.2, duration: 0.4, ...transition },
+                                }}
+
+                                exit={{
+                                    scale: 0,
+                                    transition: { delay: 0, duration: 0.4, ...transition },
+                                }}
+                                style={{
+                                    transformOrigin: "center left"
+                                }}
+                            />
+
+                            <motion.p
                                 className="text-lg text-gray-500 font-normal leading-8 text-center md:text-left"
                                 initial={{
                                     x: "100px",
