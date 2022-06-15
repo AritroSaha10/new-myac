@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-import HeroImage from '../public/everyone.png'
+import HeroImage from '../imgs/everyone.jpg'
 import SummaryImage from '../imgs/summary.jpg'
 import ConnectImage from '../imgs/connect.jpg'
 import Logo from '../imgs/logo.png'
