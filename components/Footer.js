@@ -37,6 +37,18 @@ export default function Footer() {
                     </a>
                 ))}
             </div>
+            
+            <p className="text-md text-gray-200">
+                Made by 
+                {" "}
+                <a 
+                    className="text-blue-300 hover:text-blue-400 transition-all duration-150 underline" href="https://aritrosaha.vercel.app"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Aritro Saha
+                </a>
+            </p>
         </div>
     )
 }
