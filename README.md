@@ -10,7 +10,7 @@
 
 Website for the Mississauga Youth Action Committee. For more information visit [themyac.ca](https://themyac.ca)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/de74c3b6-3cc3-41ea-b09f-f9f4966208e7/deploy-status)](https://app.netlify.com/sites/themyac-2022/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/de74c3b6-3cc3-41ea-b09f-f9f4966208e7/deploy-status)](https://app.netlify.com/sites/themyac-2023/deploys)
 
 ## Built With
 
