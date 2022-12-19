@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 
-import TeamImage from "../../imgs/team.jpg"
+import TeamImage from "../../imgs/team.png"
 import SampleImage from "../../imgs/sample-highres.jpg"
 
 import airtableDB from "../../db/airtable";
