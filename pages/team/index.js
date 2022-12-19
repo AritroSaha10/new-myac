@@ -68,6 +68,7 @@ export default function TeamPage({ boardOfDirectorsInfo }) {
                                 src={image} 
                                 height={700} 
                                 width={700} 
+                                quality={100}
                                 objectFit="cover" 
                                 objectPosition="center" 
                                 alt="Sample image" 
