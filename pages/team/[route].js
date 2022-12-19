@@ -131,8 +131,8 @@ export default function TeamPage({ directorInfo }) {
                             >
                                 <Image
                                     src={directorInfo.image.src}
-                                    width={250}
-                                    height={250}
+                                    width={350}
+                                    height={350}
                                     placeholder="blur"
                                     blurDataURL={directorInfo.image.blurDataURL}
                                     alt="Director portrait"
