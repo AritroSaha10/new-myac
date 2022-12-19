@@ -134,6 +134,7 @@ export default function TeamPage({ directorInfo }) {
                                     width={350}
                                     height={350}
                                     placeholder="blur"
+                                    quality={100}
                                     blurDataURL={directorInfo.image.blurDataURL}
                                     alt="Director portrait"
                                     className="drop-shadow-lg"
