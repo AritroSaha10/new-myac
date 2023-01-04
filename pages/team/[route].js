@@ -38,7 +38,7 @@ export async function getStaticProps({ params }) {
     const recordRoute = params.route;
 
     const records = await airtableDB("Team").select({
-        fields: ["Name", "Position", "Bio", "Email", "Instagram Link", "Avatar", "Route"]
+        fields: ["Name", "Position", "Bio", "Email", "Instagram Link", "Route", "Avatar CDN Link", "Avatar Thumbnail CDN Link"]
     }).all();
 
     const directorRecords = records.filter(record => record.fields.Route === recordRoute);
@@ -59,8 +59,8 @@ export async function getStaticProps({ params }) {
         email: undefinedToNull(directorRecord.fields.Email),
         igLink: undefinedToNull(directorRecord.fields["Instagram Link"]),
         image: {
-            src: directorRecord.fields.Avatar[0].url,
-            blurDataURL: directorRecord.fields.Avatar[0].thumbnails.small.url
+            src: directorRecord.fields["Avatar CDN Link"],
+            blurDataURL: directorRecord.fields["Avatar Thumbnail CDN Link"]
         }
     }
 
