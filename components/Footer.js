@@ -4,6 +4,7 @@ import Logo from "../imgs/logo.png"
 import FacebookLogo from "../imgs/socialMedia/fb.png"
 import InstagramLogo from "../imgs/socialMedia/ig.png"
 import TwitterLogo from "../imgs/socialMedia/twitter.png"
+import CivicMarkRegistered from "../imgs/civic_mark.png"
 
 const socialMedias = [
     {
@@ -26,7 +27,10 @@ const socialMedias = [
 export default function Footer() {
     return (
         <div className="flex flex-col items-center gap-4 bg-sky-900 p-8 py-16">
-            <Image src={Logo} width={98} height={35} alt="Logo" />
+            <div className="flex gap-4">
+                <Image src={Logo} width={98} height={35} alt="Logo" objectFit="contain" objectPosition="center" />
+                <Image src={CivicMarkRegistered} width={200} height={90} alt="Registered community group logo" objectFit="contain" objectPosition="center" />
+            </div>
 
             <hr className="h-px bg-gray-300 border-none bg-opacity-50 w-5/6"/>
 
