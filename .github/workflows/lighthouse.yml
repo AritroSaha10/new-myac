@@ -1,0 +1,22 @@
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for 2 minutes
+        run: sleep 120s
+        shell: bash
+      
+      - uses: actions/checkout@v3
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            https://www.themyac.ca/
+            https://www.themyac.ca/team
+            https://www.themyac.ca/events
+            https://www.themyac.ca/gallery
+            https://www.themyac.ca/past-events
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
