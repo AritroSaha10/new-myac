@@ -33,8 +33,6 @@ export async function getStaticProps(context) {
         fields: ["Name", "Position", "Route", "Avatar", "Last Avatar Edit Time"],
         sort: [{ field: "Rank", direction: "asc" }],
     }).all();
-
-    // airtableDB("Team").update()
     
     await Promise.all(records.map(async ({ fields, id }, idx) => {
         const portrait = fields.Avatar[0];
@@ -66,8 +64,10 @@ export async function getStaticProps(context) {
             }
         }
 
+        const fileExists = (await avatarFile.exists())[0]
+        const thumbnailExists = (await avatarFile.exists())[0]
         // Upload the main avatar & thumbnail if needed
-        if (!(await avatarFile.exists()) || !(await avatarThumbnail.exists())) {
+        if (!fileExists || !thumbnailExists) {
             // Upload to GCP if it doesn't already exist
             console.info(`Uploading images for ${avatarThumbnailFname} (new file)...`);
             uploadAirtableToGCP(portrait.url, avatarFile, false);
@@ -82,7 +82,7 @@ export async function getStaticProps(context) {
                 uploadAirtableToGCP(portrait.url, avatarFile, false);
                 uploadAirtableToGCP(portrait.thumbnails.small.url, avatarThumbnail, true);
             } else {
-                // console.info(`Not uploading images for ${avatarThumbnailFname} (no change in Airtable)`);
+                console.info(`Not uploading images for ${avatarThumbnailFname} (no change in Airtable)`);
             }
         }
 
