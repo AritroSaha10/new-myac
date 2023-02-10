@@ -4,14 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import TeamImage from "../../imgs/team-resize.jpg"
-import SampleImage from "../../imgs/sample-highres.jpg"
 
 import airtableDB from "../../db/airtable";
-
-
 import axios from "axios";
-
-
 
 export async function getStaticProps(context) {
     const { credential } = require("firebase-admin");

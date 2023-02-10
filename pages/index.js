@@ -4,8 +4,8 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 
 import HeroImage from '../imgs/everyone.jpg'
-import SummaryImage from '../imgs/summary.jpg'
-import ConnectImage from '../imgs/connect.jpg'
+import SummaryImage from '../imgs/summary-min.jpg'
+import ConnectImage from '../imgs/connect-min.jpg'
 import Logo from '../imgs/logo.png'
 
 import { HiOutlineSpeakerphone, HiOutlineDocumentDuplicate, HiOutlineRefresh } from "react-icons/hi"
