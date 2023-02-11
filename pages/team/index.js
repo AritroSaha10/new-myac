@@ -36,13 +36,13 @@ export async function getStaticProps(context) {
     
     await Promise.all(records.map(async ({ fields, id }, idx) => {
         const portrait = fields.Avatar[0];
+        console.log(portrait)
 
         // Extract filename from avatar url
-        const avatarUrlTokens = portrait.url.split('/');
-        const avatarFname = avatarUrlTokens[avatarUrlTokens.length - 1];
+        const avatarFname = portrait.filename;
         // Create avatar thumbnail fname by adding -thumbnail suffix
         const avatarThumbnailFname = avatarFname.slice(0, avatarFname.indexOf(".")) + "-thumbnail" + avatarFname.slice(avatarFname.indexOf("."));
-        
+
         // Download and upload the original thumbnail to GCP if it doesn't exist / needs to be refreshed
         const avatarFile = bucket.file(avatarFname);
         const avatarThumbnail = bucket.file(avatarThumbnailFname);
@@ -70,8 +70,8 @@ export async function getStaticProps(context) {
         if (!fileExists || !thumbnailExists) {
             // Upload to GCP if it doesn't already exist
             console.info(`Uploading images for ${avatarThumbnailFname} (new file)...`);
-            uploadAirtableToGCP(portrait.url, avatarFile, false);
-            uploadAirtableToGCP(portrait.thumbnails.small.url, avatarThumbnail, true);
+            await uploadAirtableToGCP(portrait.url, avatarFile, false);
+            await uploadAirtableToGCP(portrait.thumbnails.small.url, avatarThumbnail, true);
         } else {
             // If it does exist, make sure a new version hasn't been uploaded
             const lastGCPUpdatedDate = new Date((await avatarFile.getMetadata())[0].updated);
@@ -79,8 +79,8 @@ export async function getStaticProps(context) {
             
             if (lastAirtableUpdatedDate.getTime() > lastGCPUpdatedDate.getTime()) {
                 console.info(`Uploading images for ${avatarThumbnailFname} (CDN refresh)...`);
-                uploadAirtableToGCP(portrait.url, avatarFile, false);
-                uploadAirtableToGCP(portrait.thumbnails.small.url, avatarThumbnail, true);
+                await uploadAirtableToGCP(portrait.url, avatarFile, false);
+                await uploadAirtableToGCP(portrait.thumbnails.small.url, avatarThumbnail, true);
             } else {
                 console.info(`Not uploading images for ${avatarThumbnailFname} (no change in Airtable)`);
             }
