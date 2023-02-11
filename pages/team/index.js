@@ -65,7 +65,7 @@ export async function getStaticProps(context) {
         }
 
         const fileExists = (await avatarFile.exists())[0]
-        const thumbnailExists = (await avatarFile.exists())[0]
+        const thumbnailExists = (await avatarThumbnail.exists())[0]
         // Upload the main avatar & thumbnail if needed
         if (!fileExists || !thumbnailExists) {
             // Upload to GCP if it doesn't already exist
@@ -84,6 +84,10 @@ export async function getStaticProps(context) {
             } else {
                 console.info(`Not uploading images for ${avatarThumbnailFname} (no change in Airtable)`);
             }
+
+            // Make sure the images are public! Or else it breaks
+            await avatarFile.makePublic();
+            await avatarThumbnail.makePublic();
         }
 
         // Push to main info array
