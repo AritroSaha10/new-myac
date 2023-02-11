@@ -36,7 +36,6 @@ export async function getStaticProps(context) {
     
     await Promise.all(records.map(async ({ fields, id }, idx) => {
         const portrait = fields.Avatar[0];
-        console.log(portrait)
 
         // Extract filename from avatar url
         const avatarFname = portrait.filename;
