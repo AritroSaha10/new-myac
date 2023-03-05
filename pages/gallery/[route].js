@@ -8,6 +8,7 @@ import airtableDB from "../../db/airtable";
 
 import Layout from "../../components/Layout";
 
+/*
 export async function getStaticPaths(context) {
     const records = await airtableDB("Gallery").select({
         fields: ["GalleryLink"],
@@ -26,12 +27,13 @@ export async function getStaticPaths(context) {
         fallback: 'blocking'
     };
 }
+*/
 
 // Convert undefined values to null (required for nextjs props)
 // Should be used for fields that might not be there
 const undefinedToNull = param => param !== undefined ? param : null;
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const recordRoute = params.route;
 
     const records = await airtableDB("Gallery").select({
@@ -46,7 +48,6 @@ export async function getStaticProps({ params }) {
             notFound: true
         }
     }
-
 
     const albumRecord = albumRecords[0].fields;
 
@@ -67,7 +68,7 @@ export async function getStaticProps({ params }) {
         props: {
             albumInfo: albumInfo
         },
-        revalidate: 10
+        // revalidate: 10
     }
 }
 
