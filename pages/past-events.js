@@ -5,6 +5,7 @@ import { FiExternalLink } from "react-icons/fi";
 
 import Layout from "../components/Layout";
 import airtableDB from "../db/airtable";
+import cacheAirtablePhoto from "../util/cacheAirtablePhoto";
 
 export async function getStaticProps() {
     let eventsInfo = [];
@@ -15,17 +16,21 @@ export async function getStaticProps() {
         filterByFormula: "({Status} = 'Concluded')"
     }).all();
 
-    records.map(({ fields }) => {
+    await Promise.all(records.map(async ({ fields, id }) => {
+        const [thumbnailFile, thumbnailSmallFile] = await cacheAirtablePhoto(fields.Thumbnail[0], id, "Content pipeline", new Date(fields["Last Thumbnail Edit Time"]), "Thumbnail CDN Link", "Thumbnail Small CDN Link")
+
         eventsInfo.push({
             name: fields.Name,
             description: fields.Description.replace("<br/>", "\n"),
             date: fields.Date,
             url: fields.URL,
             status: fields.Status,
-            image: fields.Thumbnail ? fields.Thumbnail[0].url : null,
-            blurDataURL: fields.Thumbnail ? fields.Thumbnail[0].thumbnails.small.url : null,
+            image: thumbnailFile.publicUrl(),
+            blurDataURL: thumbnailSmallFile.publicUrl(),
         })
-    })
+    }))
+
+    eventsInfo.sort((a, b) => new Date(b.date) - new Date(a.date))
 
     return {
         props: {
