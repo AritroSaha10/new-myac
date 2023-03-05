@@ -16,7 +16,7 @@ import initApp from "../db/firebase-admin/app"
  */
 export default async function cacheAirtablePhoto(airtablePhoto: Attachment, recordId: string, tableKey: string, lastAirtableUpdatedDate: Date, imgCdnSrcKey: string, thumbnailCdnSrcKey: string) {
     initApp()
-    
+
     const { getStorage } = require("firebase-admin/storage")
     const bucket = getStorage().bucket();
 
@@ -57,7 +57,7 @@ export default async function cacheAirtablePhoto(airtablePhoto: Attachment, reco
     } else {
         // If it does exist, make sure a new version hasn't been uploaded
         const lastGCPUpdatedDate = new Date((await imgFile.getMetadata())[0].updated);
-        
+
         if (lastAirtableUpdatedDate.getTime() > lastGCPUpdatedDate.getTime()) {
             console.info(`Uploading images for ${fname} (CDN refresh)...`);
             await uploadAirtableToGCP(airtablePhoto.url, imgFile, false);

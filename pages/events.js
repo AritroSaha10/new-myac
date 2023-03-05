@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 import airtableDB from "../db/airtable";
 import cacheAirtablePhoto from "../util/cacheAirtablePhoto";
 
-export async function getStaticProps() {    
+export async function getStaticProps() {
     let eventsInfo = [];
 
     const records = await airtableDB("Content pipeline").select({
@@ -86,7 +86,7 @@ export default function Events({ eventsInfo }) {
 
                                     <a className="mt-2 text-lg text-blue-600 hover:underline" href={event.url} target="_blank" rel="noreferrer">
                                         <span className="flex items-center gap-2">
-                                        Learn More <FiExternalLink />
+                                            Learn More <FiExternalLink />
                                         </span>
                                     </a>
                                 </div>

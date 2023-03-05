@@ -68,7 +68,6 @@ export default function GalleryIndex({ galleryInfo }) {
             </div>
 
             <div className="p-8 pt-0 md:pb-16">
-                
                 {galleryInfo.length === 0 ? (
                     <div className="flex flex-col items-center w-full">
                         <h1 className="text-5xl text-gray-600 font-medium text-center mb-4">
