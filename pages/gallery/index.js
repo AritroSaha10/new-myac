@@ -7,6 +7,7 @@ import { FiLink2 } from "react-icons/fi";
 
 import Layout from "../../components/Layout";
 import airtableDB from "../../db/airtable";
+import cacheAirtablePhoto from "../../util/cacheAirtablePhoto";
 
 import ConnectImage from "../../imgs/connect.jpg"
 
@@ -18,19 +19,21 @@ export async function getStaticProps() {
         sort: [{ field: "Date", direction: "desc" }],
     }).all();
 
-    records.map(({ fields }) => {
+    await Promise.all(records.map(async ({ fields, id }) => {
+        const [thumbnailFile, thumbnailBlurDataFile] = await cacheAirtablePhoto(fields.Thumbnail[0], id, "Gallery", new Date(fields["Last Pohotos Edited Time"]), "Thumbnail CDN Link", "Thumbnail Blur CDN Link")
+
         galleryInfo.push({
             name: fields.Name,
             date: fields.Date,
             route: fields.GalleryLink,
             thumbnail: {
-                src: fields.Thumbnail[0].url,
-                blurDataURL: fields.Thumbnail[0].thumbnails.small.url,
+                src: thumbnailFile.publicUrl(),
+                blurDataURL: thumbnailBlurDataFile.publicUrl(),
                 width: fields.Thumbnail[0].width,
                 height: fields.Thumbnail[0].height
             }
         })
-    })
+    }))
 
     return {
         props: {
