@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 
-import TeamImage from "../../imgs/team-resize.jpg"
+import TeamImage from "../../imgs/team-2023-cropped.jpg"
 
 import airtableDB from "../../db/airtable";
 import axios from "axios";
@@ -54,7 +54,6 @@ export default function TeamPage({ boardOfDirectorsInfo }) {
                     objectPosition="center top"
                     alt="Hero Image"
                     layout="fill"
-                    className="saturate-150"
                     quality={100}
                 />
             </header>

@@ -74,7 +74,7 @@ export async function getStaticProps({ params }) {
 
 export default function TeamPage({ directorInfo }) {
     const instagramLinkPrefix = "https://www.instagram.com/";
-    const instagramUsername = directorInfo.igLink.slice(instagramLinkPrefix.length, -1);
+    const instagramUsername = directorInfo.igLink ? directorInfo.igLink.slice(instagramLinkPrefix.length, -1) : "";
 
     return (
         <Layout noAnim name={directorInfo.name}>
@@ -138,6 +138,8 @@ export default function TeamPage({ directorInfo }) {
                                     blurDataURL={directorInfo.image.blurDataURL}
                                     alt="Director portrait"
                                     className="drop-shadow-lg"
+                                    objectFit="cover"
+                                    objectPosition="center"
                                 />
                             </motion.div>
 

@@ -37,7 +37,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            galleryInfo: galleryInfo
+            galleryInfo: galleryInfo.sort((a, b) => b.date - a.date)
         },
         revalidate: 10
     }
