@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import Logo from "../imgs/logo.png";
 
-import { GoThreeBars } from "react-icons/go"
+import { HiBars3 } from "react-icons/hi2";
 
 import FacebookLogo from "../imgs/socialMedia/fb.png"
 import InstagramLogo from "../imgs/socialMedia/ig.png"
@@ -89,7 +89,7 @@ export default function Header() {
                                 setShowDropdown(!showDropdown);
                             }}
                     >
-                        <GoThreeBars />
+                        <HiBars3 />
                     </button>
                 </div>
 
