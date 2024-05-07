@@ -2,6 +2,9 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
+import dynamic from 'next/dynamic';
+const ProgressBar = dynamic(() => import('../components/LoadingBar'), { ssr: false });
+
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -14,6 +17,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <AnimatePresence exitBeforeEnter>
       <Component key={router.pathname} {...pageProps} />
+      <ProgressBar />
     </AnimatePresence>
   )
 }

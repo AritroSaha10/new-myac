@@ -9,3 +9,7 @@ img {
 html {
     scroll-behavior: smooth;
 }
+
+#nprogress .bar {
+    height: 5px !important;
+}
