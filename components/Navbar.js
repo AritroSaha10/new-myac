@@ -71,51 +71,55 @@ export default function Header() {
     const currentRoute = router.route;
 
     return (
-        <header className="bg-white py-2 sticky">
-            <div className="container px-4 mx-auto lg:flex lg:items-center">
-                <div className="flex justify-between items-center">
-                    <Link href="/">
-                        <a className="p-4">
-                            <Image src={Logo} alt="logo" width={70} height={25} />
-                        </a>
-                    </Link>
+        <>
+            <header className="bg-white shadow-lg py-2 top-0 fixed w-screen z-[999999999]">
+                <div className="container px-4 mx-auto lg:flex lg:items-center">
+                    <div className="flex justify-between items-center">
+                        <Link href="/">
+                            <a className="p-4">
+                                <Image src={Logo} alt="logo" width={70} height={25} />
+                            </a>
+                        </Link>
 
-                    <button
-                        className="px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 lg:hidden"
-                        aria-label="Menu"
-                        data-test-id="navbar-menu"
-                        onClick={
-                            () => {
-                                setShowDropdown(!showDropdown);
-                            }}
-                    >
-                        <HiBars3 />
-                    </button>
-                </div>
+                        <button
+                            className="px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 lg:hidden"
+                            aria-label="Menu"
+                            data-test-id="navbar-menu"
+                            onClick={
+                                () => {
+                                    setShowDropdown(!showDropdown);
+                                }}
+                        >
+                            <HiBars3 />
+                        </button>
+                    </div>
 
-                <div className={`${showDropdown ? "flex" : "hidden"} lg:flex flex-col lg:flex-row lg:ml-auto mt-3 lg:mt-0`} data-test-id="navbar">
-                    {
-                        links.map(({ name, link, id }) =>
-                            <Link key={name} href={link}>
-                                <a
-                                    className={`${link == currentRoute ? "text-blue-400" : "text-black hover:text-blue-400"} p-2 lg:px-4 lg:mx-2 rounded duration-150 transition-colors `}
-                                    data-test-id={`navbar-${id}`}
-                                >
-                                    {name}
-                                </a>
-                            </Link>
-                        )
-                    }
-                </div>
+                    <div className={`${showDropdown ? "flex" : "hidden"} lg:flex flex-col lg:flex-row lg:ml-auto mt-3 lg:mt-0`} data-test-id="navbar">
+                        {
+                            links.map(({ name, link, id }) =>
+                                <Link key={name} href={link}>
+                                    <a
+                                        className={`${link == currentRoute ? "text-blue-400" : "text-black hover:text-blue-400"} p-2 lg:px-4 lg:mx-2 rounded duration-150 transition-colors `}
+                                        data-test-id={`navbar-${id}`}
+                                    >
+                                        {name}
+                                    </a>
+                                </Link>
+                            )
+                        }
+                    </div>
 
-                <div className={`${showDropdown ? "flex" : "hidden"} lg:flex flex-row lg:ml-auto mt-3 lg:mt-0 items-center justify-center self-center justify-self-center gap-4`} data-test-id="navbar">
-                    {socialMedias.map(({ name, icon, link }) => (
-                        <a key={name} href={link}>
-                            <Image src={icon} width={30} height={30} alt={name} />
-                        </a>
-                    ))}
+                    <div className={`${showDropdown ? "flex" : "hidden"} lg:flex flex-row lg:ml-auto mt-3 lg:mt-0 items-center justify-center self-center justify-self-center gap-4`} data-test-id="navbar">
+                        {socialMedias.map(({ name, icon, link }) => (
+                            <a key={name} href={link}>
+                                <Image src={icon} width={30} height={30} alt={name} />
+                            </a>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+
+            <div className="h-[72px]" />
+        </>
     )
 }

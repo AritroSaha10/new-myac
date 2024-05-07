@@ -43,7 +43,14 @@ export async function getStaticProps() {
 export default function Events({ eventsInfo }) {
     return (
         <Layout name="Past Events">
-            <div className="p-16 md:py-24">
+            <div className="flex pt-16 px-16 flex-col items-center items-left">
+                <div className="flex flex-col text-center">
+                    <h3 className="text-lg text-blue-500">What we&apos;ve done before</h3>
+                    <h1 className="text-5xl lg:text-5xl text-black font-bold">Past Events</h1>
+                </div>
+            </div>
+
+            <div className="p-16">
                 {eventsInfo.length === 0 ? (
                     <div className="flex flex-col items-center w-full">
                         <h1 className="text-5xl text-gray-600 font-medium text-center mb-4">
