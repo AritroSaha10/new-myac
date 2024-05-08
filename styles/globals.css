@@ -12,4 +12,5 @@ html {
 
 #nprogress .bar {
     height: 5px !important;
+    z-index: 9999999999999999;
 }

@@ -72,7 +72,7 @@ export default function Header() {
 
     return (
         <>
-            <header className="bg-white shadow-lg py-2 top-0 fixed w-screen z-[999999999]">
+            <header className="bg-white shadow-lg py-2 top-0 fixed w-screen z-[999]">
                 <div className="container px-4 mx-auto lg:flex lg:items-center">
                     <div className="flex justify-between items-center">
                         <Link href="/">
